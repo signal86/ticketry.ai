@@ -1,3 +1,6 @@
+# Lets not leak my data
+.env
+
 # Logs
 logs
 *.log
