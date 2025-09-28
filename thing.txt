@@ -1,0 +1,23 @@
+entrypoints:
+index -> login/signup
+index [logged in] -> create/delete project page
+/project/[id] -> main project pages, identified by a random UUID
+
+endpoints:
+POST /api/auth/login
+POST /api/auth/signup
+GET /api/[project]/tickets -> get all tickets // maybe something gabe does i dont really know
+GET /api/[project]/tickets/[id] -> retrieve what's on the ticket (FOR NOW, just plaintext summary of the ticket)
+POST /api/[project]/tickets -> create ticket
+DELETE /api/[project]/tickets/[id]
+PUT /api/[project]/tickets/[id]/complete -> move ticket to completed
+POST /api/[project]/invite_member -> invite
+
+auth0 handled* # api/auth/login/route.js
+auth0 handled* # api/auth/signup/route.js
+api/user/\[email\]/route.js (GET, POST) -> get user projects, create new project
+api/\[project\]/tickets/route.js (GET, POST) -> create/get all tickets
+api/\[project\]/tickets/\[id\]/route.js (GET, DELETE) -> get singular ticket, delete ticket
+api/\[project\]/tickets/\[id\]/complete/route.js (PUT) -> mark ticket as complete
+api/\[project\]/tickets/\[id\]/claim/route.js (PUT) -> mark ticket as claimed by user sent in json
+api/\[project\]/invite_member/route.js (POST) -> invite user to project

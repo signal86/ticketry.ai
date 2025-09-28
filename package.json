@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.5.0",
+    "@auth0/nextjs-auth0": "github:auth0/nextjs-auth0",
     "@google/genai": "^1.21.0",
     "agentmail": "^0.0.64",
     "dotenv": "^17.2.2",
