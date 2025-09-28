@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { auth0 } from "@/lib/auth0";
 import { redirect } from 'next/navigation'
+import template from "./ticket.js";
 
 export default async function Home() {
   const session = await auth0.getSession();
@@ -38,7 +39,8 @@ export default async function Home() {
   */
   console.log(project);
   const resTickets = await fetch(baseUrl + "/api/demo/getTickets/" + project._id.toString())
-  const tickets = resTickets.tickets
+  let tickets = await resTickets.json();
+  // tickets = tickets.tickets
   // tickets contain:
   /*
   an array of:
@@ -49,7 +51,13 @@ export default async function Home() {
   status
   createdAt
   */
+  console.log(tickets);
+  const ticketElementArray = []
+  for (let i=0; i < tickets.length; i++) {
+    ticketElementArray.push(<tickets ticket={tickets[i]}/>)
+  }
   
+
   return (
     <div className={styles["main-background"]} style={{   
       display: 'flex',
@@ -92,49 +100,15 @@ export default async function Home() {
             borderColor: '#000000',
             borderStyle: 'solid',
             background: '#208cf8',
-            boxShadow: '0, 16px 32px rgba(0, 0, 0, 0.3)',
-            zIndex: 1,
-            backgroundColor: '#208cf8',
             height: "60px",
             width: '100%',
             margin: '5px',
             textAlign: "center",
-            borderRadius: '50px'
-            }}>
-            User
-          </button>
-        </div>
-        
-
-        <div style={{
-          margin: 0,
-          height: '80px',
-          width: '100%',
-          borderColor: "#000000",
-          borderWidth: "3px",
-          borderStyle: "solid",
-          borderLeft: '0px',
-          borderRight: '0px',
-          display: 'flex',
-          flexDirection: "row"
-        }}>
-          <button style={{
-            height: '70px',
-            width: '70px',
-            fontSize: '200%',
-            margin: '3px',
             borderRadius: '50px',
-            borderColor: '#000000',
-            borderStyle: 'solid',
-            borderWidth: '5px'
-          }}>
-            +
+            fontSize: '200%'
+            }}>
+            {session.user.name}
           </button>
-          <h2 style={{
-            margin: '15px'
-          }}>
-            Add Ticket
-          </h2>
         </div>
 
         <div style={{
@@ -193,7 +167,7 @@ export default async function Home() {
         color: 'white',
         fontSize: '24px'
       }}>
-        
+      {ticketElementArray}
       </div>
 
       <div style={{

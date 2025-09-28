@@ -9,13 +9,13 @@ export async function GET(request, { params }) {
         const collection = await getCollection("items");
 
         // get tickets
-        const tickets = await collection.findAll({ project: project }).toArray()
+        const tickets = await collection.find({ project: project }).toArray()
         if (tickets == null) {
             return Response.json({message: "Not found"}, {status: 404})
         }
 
         return Response.json({tickets: tickets}, {status: 200});
     } catch (error) {
-        return Response.json({error: "error"}, {status: 400})
+        return Response.json({error: "error" + error}, {status: 400})
     }
 }
