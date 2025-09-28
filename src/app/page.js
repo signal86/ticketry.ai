@@ -3,13 +3,11 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div style={{
-      backgroundColor: '#1F8FFF',
-      background: 'linear-gradient(135deg,rgba(31, 143, 255, 1) 0%, rgba(170, 201, 213, 1) 100%)',
+    <div className={styles["main-background"]} style={{   
       display: 'flex',
       height: '100vh',
       margin: 0,
-      padding: 0,
+      padding: 0
     }}>
       <div className={styles["slide-in-left"]} style={{
         flex: 1,
@@ -42,8 +40,12 @@ export default function Home() {
           flexDirection: "row"
         }}>
           <button style={{
-            borderWidth: '1px',
+            borderWidth: '3px',
             borderColor: '#000000',
+            borderStyle: 'solid',
+            background: '#208cf8',
+            boxShadow: '0, 16px 32px rgba(0, 0, 0, 0.3)',
+            zIndex: 1,
             backgroundColor: '#208cf8',
             height: "60px",
             width: '100%',
@@ -94,14 +96,15 @@ export default function Home() {
           borderLeft: '0px',
           borderRight: '0px',
         }}>
-          <h1>
+          <h3>
             Team Members
-          </h1>
+          </h3>
           <ul>
             <li>Member</li>
             <li>Member</li>
             <li>Member</li>
           </ul>
+          </div>
 
           <div style={{
             margin: 0,
@@ -114,14 +117,16 @@ export default function Home() {
               height: '70px',
               width: '70px',
               fontSize: '100%',
-              margin: '3px'
+              margin: '3px',
+              borderRadius: '50px',
+              borderColor: '#000000',
+              borderStyle: 'solid'
             }}>
               +
             </button>
             <h2>
               Invite
             </h2>
-          </div>
 
         </div>
         
@@ -134,23 +139,23 @@ export default function Home() {
         color: 'white',
         fontSize: '24px'
       }}>
-        Div 2
+        
       </div>
 
       <div style={{
         flex: 1,
-        backgroundColor: '#000000',
-        display: 'flex',
-        margin: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        fontSize: '24px',  
-        borderColor: "#000000",
-        borderWidth: "3px",
-        borderStyle: "solid"
+        // backgroundColor: '#000000',
+        // display: 'flex',
+        // margin: 0,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // color: 'white',
+        // fontSize: '24px',  
+        // borderColor: "#000000",
+        // borderWidth: "3px",
+        // borderStyle: "solid"
       }}>
-        Div 3
+        
       </div>
     </div>
   );
