@@ -1,7 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { auth0 } from "@/lib/auth0";
+import { redirect } from 'next/navigation'
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth0.getSession();
+  if (!session) {
+    redirect("/login")
+  }
   return (
     <div className={styles["main-background"]} style={{   
       display: 'flex',
@@ -73,15 +79,18 @@ export default function Home() {
           <button style={{
             height: '70px',
             width: '70px',
-            fontSize: '100%',
+            fontSize: '200%',
             margin: '3px',
             borderRadius: '50px',
             borderColor: '#000000',
-            borderStyle: 'solid'
+            borderStyle: 'solid',
+            borderWidth: '5px'
           }}>
             +
           </button>
-          <h2>
+          <h2 style={{
+            margin: '15px'
+          }}>
             Add Ticket
           </h2>
         </div>
@@ -116,15 +125,18 @@ export default function Home() {
             <button style={{
               height: '70px',
               width: '70px',
-              fontSize: '100%',
+              fontSize: '200%',
               margin: '3px',
               borderRadius: '50px',
               borderColor: '#000000',
-              borderStyle: 'solid'
+              borderStyle: 'solid',
+              borderWidth: '5px'
             }}>
               +
             </button>
-            <h2>
+            <h2 style={{
+              margin: '15px'
+            }}>
               Invite
             </h2>
 

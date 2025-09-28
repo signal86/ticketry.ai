@@ -2,14 +2,14 @@
 
 import custom_styles from "../page.module.css";
 
-export default function LoginButton() {
+export default function LoggedIn(props) {
   return (
     <div className={custom_styles["main-background"]} style={{ height: '100vh', margin: 0, padding: 0 }}>
       <div style={styles.container}>
-          <a href="/auth/login" style={styles.form}>
-            <h2 style={styles.title}>Login</h2>
-            <button type="submit" style={styles.button}>Login with Auth0</button>
-          </a>
+      <div style={styles.form}>
+        <h2 style={styles.title}>Welcome, {props.user}</h2>
+        <p style={{ textAlign: 'center' }}>You're already logged in.</p>
+      </div>
       </div>
     </div>
   );
