@@ -1,0 +1,47 @@
+[dotenv@17.2.2] injecting env (5) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+Fetching messages from inbox: ticketry.ai@agentmail.to
+Found 4 messages:
+----
+From: Nate M <n8martin2025@gmail.com>
+To: Ticketry.ai <ticketry.ai@agentmail.to>
+Subject: Hey
+Text: Secondary thread
+
+Received at: 2025-09-27T21:36:53.669Z
+----
+From: Nate M <n8martin2025@gmail.com>
+To: Ticketry.ai <ticketry.ai@agentmail.to>
+Subject: Re: Hello from AgentMail!
+Text: Is threads the only cached content
+
+On Sat, Sep 27, 2025 at 4:28 PM Nate M <n8martin2025@gmail.com> wrote:
+
+> Mr. West when are you dropping Donda Three?
+>
+> On Sat, Sep 27, 2025 at 3:39 PM Ticketry.ai <ticketry.ai@agentmail.to>
+> wrote:
+>
+>> This is my first email sent with the AgentMail API.
+>>
+>
+
+Received at: 2025-09-27T21:36:40.760Z
+----
+From: Nate M <n8martin2025@gmail.com>
+To: Ticketry.ai <ticketry.ai@agentmail.to>
+Subject: Re: Hello from AgentMail!
+Text: Mr. West when are you dropping Donda Three?
+
+On Sat, Sep 27, 2025 at 3:39 PM Ticketry.ai <ticketry.ai@agentmail.to>
+wrote:
+
+> This is my first email sent with the AgentMail API.
+>
+
+Received at: 2025-09-27T21:28:50.510Z
+----
+From: Ticketry.ai <ticketry.ai@agentmail.to>
+To: n8martin2025@gmail.com
+Subject: Hello from AgentMail!
+Text: This is my first email sent with the AgentMail API.
+Received at: 2025-09-27T20:39:15.411Z

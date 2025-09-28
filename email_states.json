@@ -1,0 +1,62 @@
+{
+  "Nate M <n8martin2025@gmail.com>|||re: the app crashes": {
+    "status": "skipped",
+    "reason": "analysis_error",
+    "processedAt": "2025-09-28T01:48:04.536Z",
+    "emailCount": 1
+  },
+  "Nate M <n8martin2025@gmail.com>|||the app crashes": {
+    "status": "skipped",
+    "reason": "analysis_error",
+    "processedAt": "2025-09-28T01:48:11.939Z",
+    "emailCount": 1
+  },
+  "Nate M <n8martin2025@gmail.com>|||i need more pokemon in this project": {
+    "status": "skipped",
+    "reason": "analysis_error",
+    "processedAt": "2025-09-28T01:48:16.811Z",
+    "emailCount": 1
+  },
+  "Nate M <n8martin2025@gmail.com>|||hey": {
+    "status": "skipped",
+    "reason": "analysis_error",
+    "processedAt": "2025-09-28T01:48:18.496Z",
+    "emailCount": 1
+  },
+  "Nate M <n8martin2025@gmail.com>|||re: hello from agentmail!": {
+    "status": "skipped",
+    "reason": "analysis_error",
+    "processedAt": "2025-09-28T01:48:26.261Z",
+    "emailCount": 2
+  },
+  "Nate M <n8martin2025@gmail.com>|||hello from agentmail!": {
+    "status": "rejected",
+    "reason": "not_technical",
+    "processedAt": "2025-09-28T01:51:32.965Z",
+    "emailCount": 2
+  },
+  "Nate M <n8martin2025@gmail.com>|||i think it would be valuable to have a pg mode": {
+    "status": "ticket_created",
+    "ticketId": "68d895d3c3915d0dec6ca332",
+    "processedAt": "2025-09-28T01:56:36.318Z",
+    "emailCount": 2
+  },
+  "Nate M <n8martin2025@gmail.com>|||oh, my peenar": {
+    "status": "rejected",
+    "reason": "not_technical",
+    "processedAt": "2025-09-28T01:53:50.064Z",
+    "emailCount": 1
+  },
+  "Gabriel Wheeler <gabe@wheeler.onl>|||balls exploded": {
+    "status": "rejected",
+    "reason": "not_technical",
+    "processedAt": "2025-09-28T02:13:11.730Z",
+    "emailCount": 1
+  },
+  "Gabriel Wheeler <gabe@wheeler.onl>|||the app keeps crashing": {
+    "status": "ticket_created",
+    "ticketId": "68d89aadc700914ae238f28c",
+    "processedAt": "2025-09-28T02:17:18.015Z",
+    "emailCount": 2
+  }
+}
