@@ -1,7 +1,17 @@
-export default function template(props) {
+export default function Ticket(props) {
     let state
     if (props.ticket.status == "Unclaimed") {
-        state = <p>Unclaimed</p>
+        state = <p style={{
+            color: "#e0115f"
+        }}>Unclaimed</p>
+    } else if (props.ticket.status == "Claimed") {
+        state = <p style={{
+            color: "#add8e6"
+        }}>Claimed by {props.ticket.claimedby}</p>
+    } else if (props.ticket.status == "Completed") {
+        state = <p style={{
+            color: "#93dc5c"
+        }}>Completed by {props.ticket.completedby}</p>
     }
     return (
         <div style={{
@@ -15,6 +25,7 @@ export default function template(props) {
             <title>{props.ticket.name}</title>
             <h3>{props.ticket.description}</h3>
             <p><small>{props.ticket.email}</small></p>
+            {state}
         </div>
     );
 }

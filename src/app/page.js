@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { auth0 } from "@/lib/auth0";
 import { redirect } from 'next/navigation'
-import template from "./ticket.js";
+import Ticket from "./ticket.js";
 import { Roboto } from "next/font/google";
 
 export default async function Home() {
@@ -52,10 +52,11 @@ export default async function Home() {
   status
   createdAt
   */
+  tickets = tickets.tickets
   console.log(tickets);
   const ticketElementArray = []
   for (let i=0; i < tickets.length; i++) {
-    ticketElementArray.push(<tickets key={i} ticket={tickets[i]}/>)
+    ticketElementArray.push(<Ticket key={i} ticket={tickets[i]}/>)
   }
   
   const teamMembersRaw = await fetch(baseUrl + "/api/" + project._id.toString() + "/getMembers")

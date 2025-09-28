@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
         const collection = await getCollection("items");
 
         // get tickets
-        const tickets = await collection.find({ project: project }).toArray()
+        const tickets = await collection.find({ project: new ObjectId(project) }).toArray();
         if (tickets == null) {
             return Response.json({message: "Not found"}, {status: 404})
         }
