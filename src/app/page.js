@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { auth0 } from "@/lib/auth0";
 import { redirect } from 'next/navigation'
 import template from "./ticket.js";
+import { Roboto } from "next/font/google";
 
 export default async function Home() {
   const session = await auth0.getSession();
@@ -54,9 +55,17 @@ export default async function Home() {
   console.log(tickets);
   const ticketElementArray = []
   for (let i=0; i < tickets.length; i++) {
-    ticketElementArray.push(<tickets ticket={tickets[i]}/>)
+    ticketElementArray.push(<tickets key={i} ticket={tickets[i]}/>)
   }
   
+  const teamMembersRaw = await fetch(baseUrl + "/api/" + project._id.toString() + "/getMembers")
+  let teamMembers = await teamMembersRaw.json()
+  console.log("team members: " + teamMembers.members)
+
+  const memberArray = [];
+  for (let i=0; i < teamMembers.members.length; i++) {
+    memberArray.push(<p key={i}>{teamMembers.members[i]}</p>)
+  }
 
   return (
     <div className={styles["main-background"]} style={{   
@@ -64,6 +73,7 @@ export default async function Home() {
       height: '100vh',
       margin: 0,
       padding: 0
+      
     }}>
       <div className={styles["slide-in-left"]} style={{
         flex: 1,
@@ -120,15 +130,12 @@ export default async function Home() {
           borderStyle: "solid",
           borderLeft: '0px',
           borderRight: '0px',
+          fontFamily: 'Roboto'
         }}>
-          <h3>
+          <h3 style={{fontFamily: 'Roboto'}}>
             Team Members
           </h3>
-          <ul>
-            <li>Member</li>
-            <li>Member</li>
-            <li>Member</li>
-          </ul>
+          {memberArray}
           </div>
 
           <div style={{

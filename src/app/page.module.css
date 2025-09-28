@@ -31,6 +31,7 @@
   animation: slideInLeft 1.0s ease-out forwards;
 }
 
+
 .main-background {
   background-color: '#1F8FFF';
   background: linear-gradient(135deg,rgba(31, 143, 255, 1) 0%, rgba(170, 201, 213, 1) 100%);
