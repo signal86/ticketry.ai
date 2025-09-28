@@ -78,10 +78,10 @@ export default async function Home() {
     }}>
       <div className={styles["slide-in-left"]} style={{
         flex: 1,
-        background: '#c1c7d7',
+        background: '#9c9c9c',
         boxShadow: '0 16px 32px rgba(0, 0, 0, 0.3)',
         zIndex: 1,
-        backgroundColor: '#c1c7d7',
+        backgroundColor: '#9c9c9c',
         display: 'flex',
         margin: 0,
         color: 'white',

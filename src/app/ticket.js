@@ -85,7 +85,7 @@ export default function Ticket(props) {
     }
     return (
         <div style={{
-            backgroundColor: '#c1c7d7',
+            backgroundColor: '#9c9c9c',
             borderStyle: 'solid',
             borderColor: '#000000',
             borderWidth: '3px',
