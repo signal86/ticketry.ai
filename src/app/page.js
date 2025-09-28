@@ -52,21 +52,29 @@ export default async function Home() {
   status
   createdAt
   */
-  tickets = tickets.tickets
+  tickets = tickets
   // console.log(tickets);
   const ticketElementArray = []
-  for (let i=0; i < tickets.length; i++) {
-    ticketElementArray.push(<Ticket key={i} projectId={project._id.toString()} ticket={tickets[i]}/>)
+  try {
+    for (let i=0; i < tickets.length; i++) {
+      ticketElementArray.push(<Ticket key={i} projectId={project._id.toString()} ticket={tickets[i]}/>)
+    }
+  } catch (e) {
+    console.log(e)
   }
   
-  const teamMembersRaw = await fetch(baseUrl + "/api/" + project._id.toString() + "/getMembers")
-  let teamMembers = await teamMembersRaw.json()
-  // console.log("team members: " + teamMembers.members)
-
   const memberArray = [];
-  for (let i=0; i < teamMembers.members.length; i++) {
-    memberArray.push(<p key={i}>{teamMembers.members[i]}</p>)
-  }
+  try {
+    const teamMembersRaw = await fetch(baseUrl + "/api/" + project._id + "/getMembers")
+    let teamMembers = await teamMembersRaw.json()
+    // console.log("team members: " + teamMembers.members)
+
+    for (let i=0; i < teamMembers.members.length; i++) {
+      memberArray.push(<p key={i}>{teamMembers.members[i]}</p>)
+    }
+    } catch (e) {
+      console.log(e)
+    }
 
   return (
     <div className={styles["main-background"]} style={{   
