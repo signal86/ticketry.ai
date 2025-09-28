@@ -27,8 +27,8 @@ export default async function Home() {
   members (aray of members)
   createdAt
   */
-
-  const resTickets = await fetch(baseUrl + "api/demo/getTickets/" + project._id.toString())
+  console.log(project);
+  const resTickets = await fetch(baseUrl + "api/demo/getTickets/" + project.Id.toString())
   const tickets = resTickets.tickets
   // tickets contain:
   /*

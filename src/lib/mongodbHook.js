@@ -17,7 +17,7 @@ export default promise;
 
 // accessing the collection
 export async function getCollection(collectionName, dbName = 'ticketryai') {
-    if !collectionName {
+    if (!collectionName) {
         throw new Error('Collection name is required');
     }
     const db = client.db(dbName);
