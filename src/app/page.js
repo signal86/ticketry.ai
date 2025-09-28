@@ -173,7 +173,9 @@ export default async function Home() {
         flex: 3,
         display: 'flex',
         alignItems: 'center',
+        marginRight: '100',
         justifyContent: 'center',
+        flexDirection:'column',
         color: 'white',
         fontSize: '24px'
       }}>

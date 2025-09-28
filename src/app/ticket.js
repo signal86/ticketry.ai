@@ -90,7 +90,9 @@ export default function Ticket(props) {
             borderColor: '#000000',
             borderWidth: '3px',
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            width: '500px',
+            boxShadow: '0 16px 32px rgba(0, 0, 0, 0.3)'
         }}>
             <h3>{props.ticket.title}</h3>
             {/* <h3>{props.ticket.description}</h3> */}
