@@ -14,14 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <Auth0Provider
           domain="genai-3516777384231424.us.auth0.com"
-          clientId="VOScasYiJJXTjlfQd3ONeZHWgAdT3d4N"
+          clientId={process.env.NEXT_PUBLIC_AUTH0_KEY}
           authorizationParams={{
             redirect_uri: typeof window !== 'undefined' ? window.location.origin : '',
           }}
