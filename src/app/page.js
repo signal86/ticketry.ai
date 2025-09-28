@@ -39,7 +39,7 @@ export default async function Home() {
   createdAt
   */
   // console.log(project);
-  const resTickets = await fetch(baseUrl + "/api/demo/getTickets/" + project._id.toString())
+  const resTickets = await fetch(baseUrl + "/api/demo/getTickets/" + project._id)
   let tickets = await resTickets.json();
   // tickets = tickets.tickets
   // tickets contain:
