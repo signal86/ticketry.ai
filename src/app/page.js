@@ -18,7 +18,7 @@ export default async function Home() {
       body: JSON.stringify({ name: session.user.name })
     })
   }
-  console.log(res)
+  // console.log(res)
   res = await res.json()
   // res = await fetch(baseUrl + "/api/demo/doesProjectExist/" + session.user.email)
   //   console.log(res)
@@ -28,7 +28,7 @@ export default async function Home() {
   // res = await res.json()
   // res.project is the project
 
-  console.log(res)
+  // console.log(res)
   const project = res.project
   // project contains:
   /*
@@ -38,7 +38,7 @@ export default async function Home() {
   members (aray of members)
   createdAt
   */
-  console.log(project);
+  // console.log(project);
   const resTickets = await fetch(baseUrl + "/api/demo/getTickets/" + project._id.toString())
   let tickets = await resTickets.json();
   // tickets = tickets.tickets
@@ -53,15 +53,15 @@ export default async function Home() {
   createdAt
   */
   tickets = tickets.tickets
-  console.log(tickets);
+  // console.log(tickets);
   const ticketElementArray = []
   for (let i=0; i < tickets.length; i++) {
-    ticketElementArray.push(<Ticket key={i} ticket={tickets[i]}/>)
+    ticketElementArray.push(<Ticket key={i} projectId={project._id.toString()} ticket={tickets[i]}/>)
   }
   
   const teamMembersRaw = await fetch(baseUrl + "/api/" + project._id.toString() + "/getMembers")
   let teamMembers = await teamMembersRaw.json()
-  console.log("team members: " + teamMembers.members)
+  // console.log("team members: " + teamMembers.members)
 
   const memberArray = [];
   for (let i=0; i < teamMembers.members.length; i++) {

@@ -10,6 +10,7 @@ export async function PUT(request, { params }) {
     try {
         // Extract project and ticket ID from URL params
         const { project, id } = await params;
+        const collection = await getCollection("items");
 
         // Parse JSON body to get user info
         const { userEmail } = await request.json();
@@ -30,7 +31,7 @@ export async function PUT(request, { params }) {
         }
 
         // does ticket exist
-        let res = await getCollection("items").findOne({ project: ObjectId(project), id: ObjectId(id) });
+        let res = await collection.findOne({ project: new ObjectId(project), id: new ObjectId(id) });
         if (!res) {
             return NextResponse.json({ error: "Ticket not found" }, { status: 404 })
         }
@@ -42,7 +43,7 @@ export async function PUT(request, { params }) {
         // TODO: check if ticket exists
 
         // actual claim
-        const claimed = await getCollection("items").updateOne({ project: ObjectId(project), id: ObjectId(id) }, { $set: { status: 'claimed', claimedBy: userEmail } });
+        const claimed = await collection.updateOne({ project: new ObjectId(project), id: new ObjectId(id) }, { $set: { status: 'claimed', claimedBy: userEmail } });
 
         return NextResponse.json({}, { status: 200 });
 

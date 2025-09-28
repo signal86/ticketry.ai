@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getCollection } from '@/lib/mongodbHook'
 import { ObjectId } from 'mongodb'
 
-// PUT /api/[project]/tickets/[id]/claim
+// PUT /api/[project]/tickets/[id]/complete
 // marks ticket as completed by a user
 // requires userEmail
 // returns JSON object of claimed (true or false) and reason, or error
@@ -31,24 +31,24 @@ export async function PUT(request, { params }) {
         }
 
         // Check if user is in the team
-        const user = await collection.findOne({ project: ObjectId(project), email: userEmail });
+        const user = await collection.findOne({ project: new ObjectId(project), email: userEmail });
         if (!user) {
             return NextResponse.json({ error: "User not found" }, { status: 404 })
         }
 
         // Check if ticket exists
-        const ticket = await collection.findOne({ project: ObjectId(project), id: ObjectId(id) });
+        const ticket = await collection.findOne({ project: new ObjectId(project), id: new ObjectId(id) });
         if (!ticket) {
             return NextResponse.json({ error: "Ticket not found" }, { status: 404 })
         }
 
         // check completed already
-        if (collection.findOne({ project: ObjectId(project), _id: ObjectId(id), status: 'completed' })) {
+        if (collection.findOne({ project: new ObjectId(project), _id: new ObjectId(id), status: 'completed' })) {
             return NextResponse.json({ error: "Ticket already completed" }, { status: 400 })
         }
 
         // actual complete
-        await collection.updateOne({ project: ObjectId(project), id: ObjectId(id) }, { $set: { status: 'completed', completedBy: userEmail } });
+        await collection.updateOne({ project: new ObjectId(project), id: new ObjectId(id) }, { $set: { status: 'completed', completedBy: userEmail } });
 
         return NextResponse.json({}, { status: 200 });
 
