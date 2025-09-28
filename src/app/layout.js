@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+console.log(process.env.AUTH0_KEY)
 
 export default function RootLayout({ children }) {
   return (
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
       <body>
         <Auth0Provider
           domain="genai-3516777384231424.us.auth0.com"
-          clientId="VOScasYiJJXTjlfQd3ONeZHWgAdT3d4N"
+          clientId={process.env.AUTH0_KEY}
           authorizationParams={{
             redirect_uri: typeof window !== 'undefined' ? window.location.origin : '',
           }}
