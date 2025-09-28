@@ -9,13 +9,14 @@ export async function GET(request, { params }) {
         const collection = await getCollection("projects");
 
         // get project
-        const project = await collection.findOne({ _id: ObjectId(project) })
-        if (project == null) {
+        const project1 = await collection.findOne({ _id: new ObjectId(project) })
+        if (project1 == null) {
             return Response.json({message: "Not found"}, {status: 404})
         }
 
-        return Response.json({ members: project.members }, {status: 200})
+        return Response.json({ members: project1.members }, {status: 200})
     } catch (error) {
+        console.log("error: " + error)
         return Response.json({error: "error"}, {status: 400})
     }
 }
