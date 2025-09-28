@@ -12,7 +12,7 @@ const client = new MongoClient(uri, {
     }
 });
 
-promise = client.connect();
+let promise = client.connect();
 export default promise;
 
 // accessing the collection
