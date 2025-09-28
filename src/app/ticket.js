@@ -95,7 +95,7 @@ export default function Ticket(props) {
             <h3>{props.ticket.title}</h3>
             {/* <h3>{props.ticket.description}</h3> */}
             <p><small>{props.ticket.email}</small></p>
-            {/* {state} */}
+            {state}
             {/* {superButton} */}
         </div>
     );

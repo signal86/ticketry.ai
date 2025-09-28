@@ -106,6 +106,7 @@ export default async function Home() {
           display: 'flex',
           flexDirection: "row"
         }}>
+          <a style={{width: '95%', textAlign: 'center'}}href='/auth/logout'>
           <button style={{
             borderWidth: '3px',
             borderColor: '#000000',
@@ -116,10 +117,11 @@ export default async function Home() {
             margin: '5px',
             textAlign: "center",
             borderRadius: '50px',
-            fontSize: '200%'
+            fontSize: '2rem'
             }}>
-            {session.user.name}
+            {session.user.name} - Logout
           </button>
+          </a>
         </div>
 
         <div style={{
