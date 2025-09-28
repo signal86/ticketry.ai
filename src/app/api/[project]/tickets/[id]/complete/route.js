@@ -9,12 +9,11 @@ import { ObjectId } from 'mongodb'
 export async function PUT(request, { params }) {
     try {
         // Extract project and ticket ID from URL params
-        const { project, id } = params;
+        const { project, id } = await params;
         const collection = await getCollection("items");
 
         // Parse JSON body to get user info
-        const body = await request.json();
-        const { userEmail } = body;
+        const { userEmail } = await request.json();
 
         // Validate required fields
         if (!userEmail) {
@@ -48,10 +47,10 @@ export async function PUT(request, { params }) {
             return NextResponse.json({ error: "Ticket already completed" }, { status: 400 })
         }
 
-        return NextResponse.json({
-            claimed,
-            reason: 'TODO: ticket completing',
-        }, { status: 200 });
+        // actual complete
+        await collection.updateOne({ project: ObjectId(project), id: ObjectId(id) }, { $set: { status: 'completed', completedBy: userEmail } });
+
+        return NextResponse.json({}, { status: 200 });
 
     } catch (error) {
         console.error("Error claiming ticket: ", error);

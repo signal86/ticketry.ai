@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+import { getCollection } from '@/lib/mongodbHook'
+import { ObjectId } from 'mongodb'
 
 // PUT /api/[project]/tickets/[id]/claim
 // marks ticket as claimed by a user
@@ -7,11 +9,10 @@ import { NextResponse } from 'next/server'
 export async function PUT(request, { params }) {
     try {
         // Extract project and ticket ID from URL params
-        const { project, id } = params;
+        const { project, id } = await params;
 
         // Parse JSON body to get user info
-        const body = await request.json();
-        const { userEmail } = body;
+        const { userEmail } = await request.json();
 
         // Validate required fields
         if (!userEmail) {
@@ -28,15 +29,22 @@ export async function PUT(request, { params }) {
             );
         }
 
-        // TODO: Add database logic here
-        // TODO: check claimed already, if user is in the team, if the ticket exists
+        // does ticket exist
+        let res = await getCollection("items").findOne({ project: ObjectId(project), id: ObjectId(id) });
+        if (!res) {
+            return NextResponse.json({ error: "Ticket not found" }, { status: 404 })
+        }
+        // check claimed already
+        if (res.status === 'claimed') {
+            return NextResponse.json({ error: "Ticket already claimed" }, { status: 400 })
+        }
+        // TODO: check if user is in the team
+        // TODO: check if ticket exists
 
-        claimed = true;
+        // actual claim
+        const claimed = await getCollection("items").updateOne({ project: ObjectId(project), id: ObjectId(id) }, { $set: { status: 'claimed', claimedBy: userEmail } });
 
-        return NextResponse.json({
-            claimed: claimed,
-            reason: 'TODO: ticket claiming',
-        }, { status: 200 });
+        return NextResponse.json({}, { status: 200 });
 
     } catch (error) {
         console.error('Error claiming ticket:', error);
