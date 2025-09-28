@@ -5,17 +5,17 @@ import { ObjectId } from 'mongodb'
 // get whether or not someone has activated a project
 export async function GET(request, { params }) {
     try {
-        const project = params.project;
+        const { project } = await params;
         const collection = await getCollection("items");
 
         // get tickets
         const tickets = await collection.findAll({ project: project }).toArray()
         if (tickets == null) {
-            return Response.json({message: "Not found", status: 404})
+            return Response.json({message: "Not found"}, {status: 404})
         }
 
-        return Response.json({tickets: tickets, status: 200});
+        return Response.json({tickets: tickets}, {status: 200});
     } catch (error) {
-        return Response.json({error: "error", status: 400})
+        return Response.json({error: "error"}, {status: 400})
     }
 }

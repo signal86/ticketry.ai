@@ -9,15 +9,24 @@ export default async function Home() {
     redirect("/login")
   }
   const baseUrl = process.env.APP_BASE_URL
-  const res = await fetch(baseUrl + "/api/demo/doesProjectExist/" + session.user.email)
+  let res = await fetch(baseUrl + "/api/demo/doesProjectExist/" + session.user.email)
   if (res.status != 200) {
-    // return button to create it
-    // button to create it should fetch /api/demo/createProject/ + session.user.email
-    // use POST method
-    // json body "name" is name of project, probably can just make it session.user.name
+    res = await fetch(baseUrl + "/api/demo/createProject/" + session.user.email, {
+      method: 'POST',
+      body: JSON.stringify({ name: session.user.name })
+    })
   }
+  console.log(res)
+  res = await res.json()
+  // res = await fetch(baseUrl + "/api/demo/doesProjectExist/" + session.user.email)
+  //   console.log(res)
+  // if (res.status != 200) {
+  //   throw new Error("its so over")
+  // }
+  // res = await res.json()
   // res.project is the project
 
+  console.log(res)
   const project = res.project
   // project contains:
   /*
@@ -28,7 +37,7 @@ export default async function Home() {
   createdAt
   */
   console.log(project);
-  const resTickets = await fetch(baseUrl + "api/demo/getTickets/" + project.Id.toString())
+  const resTickets = await fetch(baseUrl + "/api/demo/getTickets/" + project._id.toString())
   const tickets = resTickets.tickets
   // tickets contain:
   /*
