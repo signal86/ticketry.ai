@@ -169,7 +169,7 @@ export default async function Home() {
         </div>
         
       </div>
-      <div style={{
+      <div className={styles['slide-in-top']} style={{
         flex: 3,
         display: 'flex',
         alignItems: 'center',
