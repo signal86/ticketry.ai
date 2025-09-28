@@ -8,6 +8,39 @@ export default async function Home() {
   if (!session) {
     redirect("/login")
   }
+  const baseUrl = process.env.APP_BASE_URL
+  const res = await fetch(baseUrl + "/api/demo/doesProjectExist/" + session.user.email)
+  if (res.status != 200) {
+    // return button to create it
+    // button to create it should fetch /api/demo/createProject/ + session.user.email
+    // use POST method
+    // json body "name" is name of project, probably can just make it session.user.name
+  }
+  // res.project is the project
+
+  const project = res.project
+  // project contains:
+  /*
+  _id (type ObjectId)
+  name (project name)
+  owner (email of owner)
+  members (aray of members)
+  createdAt
+  */
+
+  const resTickets = await fetch(baseUrl + "api/demo/getTickets/" + project._id.toString())
+  const tickets = resTickets.tickets
+  // tickets contain:
+  /*
+  an array of:
+  title
+  email
+  description
+  additionaldetails
+  status
+  createdAt
+  */
+  
   return (
     <div className={styles["main-background"]} style={{   
       display: 'flex',
