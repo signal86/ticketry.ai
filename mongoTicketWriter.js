@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 dotenv.config();
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 const uri = `mongodb+srv://${process.env.DATABASE_ADMIN_USERNAME}:${process.env.DATABASE_ADMIN_PASSWORD}@cluster000.ujpmqhi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster000`;
 
@@ -45,7 +45,7 @@ async function postNewItem(
       email: email,
       description: description,
       additionalDetails: additionalDetails,
-      project: "mach005.business@gmail.com",
+      project: new ObjectId("68d9091f56c61d350b9e4a5e"),
       status: "Unclaimed",
       createdAt: new Date(),
     };
